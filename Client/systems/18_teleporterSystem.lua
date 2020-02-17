@@ -24,8 +24,8 @@ return function(Sunshine, entity)
                 end
             end, entity, collider, "hitEntity")
         elseif button then
-            Sunshine:update(function()
-                if button.activated then
+            Sunshine:change(function(activated)
+                if activated then
                     teleporter.activated = true
                     local cutout
                     for _, otherEntity in pairs(Sunshine.scenes[2].entities) do
@@ -38,7 +38,7 @@ return function(Sunshine, entity)
                     cutout.sceneTransition.type = "teleport"
                     cutout.sceneTransition.loading = true
                 end
-            end, entity)
+            end, entity, button, "activated")
         end
     end
 end
