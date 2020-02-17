@@ -25,30 +25,23 @@ return function(Sunshine, entity)
         originalSize = model.model.PrimaryPart.Size
         transform.cFrame = nil
         local lastCFrame = CFRAME_NEW()
-        setmetatable(transform, {
-            __index = function(_, key)
-                if not model.model.Parent then
-                    setmetatable(transform, {})
-                    transform.cFrame = CFRAME_NEW()
-                    return lastCFrame
-                end
-                if key == "cFrame" then
-                    lastCFrame = model.model:GetPrimaryPartCFrame()
-                    return lastCFrame
-                end
-            end,
-            __newindex = function(_, key, value)
-                if not model.model.Parent then
-                    setmetatable(transform, {})
-                    return
-                end
-                if key == "cFrame" then
-                    if value.LookVector.Unit.Magnitude == value.LookVector.Unit.Magnitude then
-                        model.model:SetPrimaryPartCFrame(value)
-                    end
-                end
+        Sunshine:access(function()
+            if not model.model.Parent then
+                transform.cFrame = CFRAME_NEW()
+                return lastCFrame
             end
-        })
+            lastCFrame = model.model:GetPrimaryPartCFrame()
+            return lastCFrame
+        end, transform, "cFrame")
+        Sunshine:change(function(value)
+            if not model.model.Parent then
+                setmetatable(transform, {})
+                return
+            end
+            if value.LookVector.Unit.Magnitude == value.LookVector.Unit.Magnitude then
+                model.model:SetPrimaryPartCFrame(value)
+            end
+        end, transform, "cFrame")
         Sunshine:update(function()
             if model and transform then
                 if model.model.PrimaryPart and transparency or transform.size ~= VECTOR3_NEW(1, 1, 1) then

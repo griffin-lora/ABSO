@@ -16,7 +16,7 @@ return function(_, component)
                 local value
                 for _, callback in ipairs(metatable.callbacks) do
                     if not callback[1] and callback[3] == property then
-                        local currentValue = callback[2](component[property])
+                        local currentValue = callback[2](rawget(component, "property"))
                         if value and currentValue then
                             error("Access conflict. 2 or more callbacks are returning a value.")
                         end

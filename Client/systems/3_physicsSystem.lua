@@ -100,35 +100,6 @@ return function(Sunshine, entity)
         Sunshine:change(function(value)
             model.model.PrimaryPart.Velocity = value
         end, physics, "velocity")
-        -- setmetatable(physics, {
-        --     __index = function(_, key)
-        --         if not model.model.Parent then
-        --             setmetatable(physics, {})
-        --             physics.velocity = BLANK_VECTOR3
-        --             return BLANK_VECTOR3
-        --         end
-        --         if key == "velocity" then
-        --             return model.model.PrimaryPart.Velocity or BLANK_VECTOR3
-        --         elseif key == "movable" then
-        --             return not bodyVelocity.Parent
-        --         end
-        --     end,
-        --     __newindex = function(_, key, value)
-        --         if not model.model.Parent then
-        --             setmetatable(physics, {})
-        --             return
-        --         end
-        --         if key == "velocity" then
-        --             model.model.PrimaryPart.Velocity = value
-        --         elseif key == "movable" then
-        --             if value then
-        --                 bodyVelocity.Parent = nil
-        --             else
-        --                 bodyVelocity.Parent = model.model.PrimaryPart
-        --             end
-        --         end
-        --     end
-        -- })
         local pauseVelocity
         Sunshine:update(function()
             if entity.core.active and entity.core.scene.active then
