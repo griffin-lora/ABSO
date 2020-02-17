@@ -32,7 +32,7 @@ return function(Sunshine, entity)
             end
             lastCFrame = model.model:GetPrimaryPartCFrame()
             return lastCFrame
-        end, transform, "cFrame")
+        end, entity, transform, "cFrame")
         Sunshine:change(function(value)
             if not model.model.Parent then
                 setmetatable(transform, {})
@@ -41,7 +41,7 @@ return function(Sunshine, entity)
             if value.LookVector.Unit.Magnitude == value.LookVector.Unit.Magnitude then
                 model.model:SetPrimaryPartCFrame(value)
             end
-        end, transform, "cFrame")
+        end, entity, transform, "cFrame")
         Sunshine:update(function()
             if model and transform then
                 if model.model.PrimaryPart and transparency or transform.size ~= VECTOR3_NEW(1, 1, 1) then

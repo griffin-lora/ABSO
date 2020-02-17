@@ -18,5 +18,9 @@ return function(_, entity)
         for _, connection in pairs(entity.core.connections) do
             connection:Disconnect()
         end
+        for _, metatableCallback in pairs(entity.core.metatableCallbacks) do
+            local metatable = getmetatable(metatableCallback[1])
+            table.remove(metatable.callbacks, metatableCallback[2])
+        end
     end
 end

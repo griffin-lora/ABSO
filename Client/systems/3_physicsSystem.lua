@@ -96,10 +96,10 @@ return function(Sunshine, entity)
         -- physics.movable = nil
         Sunshine:access(function()
             return model.model.PrimaryPart.Velocity or BLANK_VECTOR3
-        end, physics, "velocity")
+        end, entity, physics, "velocity")
         Sunshine:change(function(value)
             model.model.PrimaryPart.Velocity = value
-        end, physics, "velocity")
+        end, entity, physics, "velocity")
         local pauseVelocity
         Sunshine:update(function()
             if entity.core.active and entity.core.scene.active then

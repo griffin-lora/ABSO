@@ -13,8 +13,7 @@ return function(Sunshine, dataEntity, scene)
                     connections = {},
                     sceneUnloadCallbacks = {},
                     entityDestroyCallbacks = {},
-                    changeCallbacks = {},
-                    accessCallbacks = {},
+                    metatableCallbacks = {},
                     dataEntity = dataEntity
                 }
             }

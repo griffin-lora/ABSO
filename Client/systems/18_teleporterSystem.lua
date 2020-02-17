@@ -7,9 +7,9 @@ return function(Sunshine, entity)
     if teleporter then
         local scene = require(teleporter.scene)
         if collider then
-            Sunshine:update(function()
-                if collider.hitEntity and collider.hitEntity.character and
-                collider.hitEntity.character.controllable then
+            Sunshine:change(function(hitEntity)
+                if hitEntity and hitEntity.character and
+                hitEntity.character.controllable then
                     teleporter.activated = true
                     local cutout
                     for _, otherEntity in pairs(Sunshine.scenes[2].entities) do
@@ -22,7 +22,7 @@ return function(Sunshine, entity)
                     cutout.sceneTransition.type = "teleport"
                     cutout.sceneTransition.loading = true
                 end
-            end, entity)
+            end, entity, collider, "hitEntity")
         elseif button then
             Sunshine:update(function()
                 if button.activated then
