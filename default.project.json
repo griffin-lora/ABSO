@@ -34,7 +34,7 @@
 			"$className": "ServerScriptService",
 			"Server": {
 				"$path": "Server"
-			}
+            }
 		},
 		"ServerStorage": {
 			"$className": "ServerStorage",
@@ -49,10 +49,28 @@
                 "PluginNetworkClient": {
                     "$path": "PluginNetworkClient"
                 }
-            },
-            "GrassyPartGenerator": {
-                "$path": "GrassyPartGenerator"
             }
-		}
+        },
+        "Workspace": {
+            "$className": "Workspace",
+            "$properties": {
+                "Gravity": 250
+            }
+        },
+        "Players": {
+            "$className": "Players",
+            "$properties": {
+                "CharacterAutoLoads": false
+            }
+        },
+        "StarterPlayer": {
+            "$className": "StarterPlayer",
+            "StarterPlayerScripts": {
+                "$className": "StarterPlayerScripts",
+                "PlayerScriptsLoader": {
+                    "$path": "Miscellaneous/PlayerScriptsLoader.client.lua"
+                }
+            }
+        }
 	}
 }
