@@ -7,4 +7,4 @@ For easy set up you will need [VS Code](https://code.visualstudio.com/) and [Roj
 After downloading both of those you will then need to go into the Rojo settings in VS Code and toggle the plugin management setting, along with setting the release branch to the latest version.
 Next you'll need to open up Roblox Studio and create a new place. Delete everything in the workspace then in VS Code click on Start Rojo, go back to Roblox Studio and in the plugins tab click on rojo and in the widget that opens click connect!
 
-That should be the end of it but unfortunately due to some issues Roblox still hasn't fixed you'll have to drag the costumes.rbxm, frames.rbxm, and models.rbxm into the Assets folder in game. After doing this everything should be working!
+That should be the end of it but unfortunately due to some issues Roblox still hasn't fixed you'll have to drag the costumes.rbxm, frames.rbxm, and models.rbxm into the Assets folder into Roblox Studio. After doing this everything should be working!
