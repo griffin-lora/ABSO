@@ -10,6 +10,8 @@ return function(Sunshine, entity)
                 local hitEntity = Sunshine:getEntity(part.Parent.Name, entity.core.scene)
                 if hitEntity and hitEntity.collider and not hitEntity.collider.anchored then
                     collider.hitEntities[#collider.hitEntities + 1] = hitEntity
+                    -- this is so the metatable registers the change
+                    collider.hitEntities = collider.hitEntities
                 end
             end
         end, entity)
@@ -20,6 +22,8 @@ return function(Sunshine, entity)
                     for index, otherEntity in pairs(collider.hitEntities) do
                         if otherEntity == hitEntity then
                             collider.hitEntities[index] = nil
+                            -- this is so the metatable registers the change
+                            collider.hitEntities = collider.hitEntities
                         end
                     end
                 end
@@ -34,6 +38,8 @@ return function(Sunshine, entity)
                     local hitEntity = Sunshine:getEntity(part.Parent.Name, entity.core.scene)
                     if hitEntity and hitEntity.collider and hitEntity.collider.anchored then
                         collider.hitEntities[#collider.hitEntities + 1] = hitEntity
+                        -- this is so the metatable registers the change
+                        collider.hitEntities = collider.hitEntities
                         foundHitEntities[#foundHitEntities + 1] = hitEntity
                     end
                 end
@@ -48,6 +54,8 @@ return function(Sunshine, entity)
                     end
                     if not found then
                         collider.hitEntities[index] = nil
+                        -- this is so the metatable registers the change
+                        collider.hitEntities = collider.hitEntities
                     end
                 end
             end

@@ -27,7 +27,9 @@ return function(Sunshine, entity)
             elseif collected and speaker.sounds == 0 then
                 Sunshine:destroyEntity(entity)
             end
-            for _, hitEntity in pairs(collider.hitEntities) do
+        end, entity)
+        Sunshine:change(function(hitEntities)
+            for _, hitEntity in pairs(hitEntities) do
                 if hitEntity and ((hitEntity.head and hitEntity.head.character) or (hitEntity.character and
                 hitEntity.character.player)) and not collected then
                     local player
@@ -53,6 +55,6 @@ return function(Sunshine, entity)
                     end
                 end
             end
-        end, entity)
+        end, entity, collider, "hitEntities")
     end
 end
