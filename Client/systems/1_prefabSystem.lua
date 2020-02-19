@@ -7,6 +7,7 @@ return function(Sunshine, entity)
         for name, component in pairs(prefab.prefab) do
             if not entity[name] then
                 entity[name] = Sunshine:cloneTable(component)
+                entity[name].objectType = "Component"
             else
                 for propertyName, propertyValue in pairs(component) do
                     if not entity[name][propertyName] then

@@ -2,7 +2,9 @@ return function(Sunshine, dataEntity, scene)
     if dataEntity.core then
         if dataEntity.core.active then
             local entity = {
+                objectType = "Entity",
                 core = {
+                    objectType = "Component",
                     name = dataEntity.core.name,
                     id = dataEntity.core.id,
                     active = dataEntity.core.active,
@@ -19,7 +21,7 @@ return function(Sunshine, dataEntity, scene)
             }
             for componentName, dataComponent in pairs(dataEntity) do
                 if componentName ~= "core" then
-                    local component = {}
+                    local component = { objectType = "Component" }
                     for name, value in pairs(dataComponent) do
                         component[name] = value
                     end

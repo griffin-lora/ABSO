@@ -22,6 +22,12 @@
                 "skies": {
                     "$path": "Assets/skies.rbxm"
                 }
+            },
+            "typedFunction": {
+                "$path": "Miscellaneous/typedFunction.lua"
+            },
+            "typeOf": {
+                "$path": "Miscellaneous/typeOf.lua"
             }
         },
         "ReplicatedFirst": {
