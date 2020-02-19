@@ -1,10 +1,15 @@
 local workspaceFindPart = workspace.FindPartOnRayWithIgnoreList
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
 
-return function(Sunshine, ray, ignoreList)
+return typedFunction({
+    "Sunshine",
+    "Ray",
+    "table"
+}, function(Sunshine, ray, ignoreList)
     local part, position, normal, material = workspaceFindPart(workspace, ray, ignoreList)
     if part and not part.CanCollide then
         ignoreList[#ignoreList + 1] = part
         return Sunshine:findPartOnRay(ray, ignoreList)
     end
     return part, position, normal, material
-end
+end)

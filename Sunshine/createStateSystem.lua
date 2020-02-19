@@ -1,4 +1,16 @@
-return function(Sunshine, entity, state, startCheck, start, update, stopCheck, stop, generalUpdate)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "Sunshine",
+    "Entity",
+    "string",
+    "function",
+    "function",
+    "function",
+    "function",
+    "function",
+    "function",
+}, function(Sunshine, entity, state, startCheck, start, update, stopCheck, stop, generalUpdate)
     local component = entity[state]
     local character = entity.character
     local input = entity.input
@@ -31,4 +43,4 @@ return function(Sunshine, entity, state, startCheck, start, update, stopCheck, s
             lastState = character.state
         end, entity)
     end
-end
+end)

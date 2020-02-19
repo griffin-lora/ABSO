@@ -1,4 +1,9 @@
-return function(_, entity)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "any",
+    "Entity"
+}, function(_, entity)
     local destroying = true
     for _, callback in pairs(entity.core.entityDestroyCallbacks) do
         if callback() == false then
@@ -23,4 +28,4 @@ return function(_, entity)
             table.remove(metatable.callbacks, metatableCallback[2])
         end
     end
-end
+end)

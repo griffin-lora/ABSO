@@ -1,3 +1,9 @@
-return function(Sunshine, system, index)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "Sunshine",
+    "function",
+    "number"
+}, function(Sunshine, system, index)
     Sunshine.systems[index] = system
-end
+end)

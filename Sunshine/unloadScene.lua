@@ -1,4 +1,9 @@
-return function(Sunshine, scene)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "Sunshine",
+    "Scene"
+}, function(Sunshine, scene)
     local unloading = true
     for _, entity in pairs(scene.entities) do
         for _, callback in pairs(entity.core.sceneUnloadCallbacks) do
@@ -17,4 +22,4 @@ return function(Sunshine, scene)
             Sunshine:destroyEntity(entity)
         end
     end
-end
+end)

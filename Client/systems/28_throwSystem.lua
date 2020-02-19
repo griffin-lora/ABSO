@@ -23,9 +23,11 @@ return function(Sunshine, entity)
     end, function()
         -- start
         local dataScene = Sunshine.dataScenes[entity.core.scene.index]
-        if Sunshine:getEntity(component.head, dataScene) then
+        local dataSceneCopy = Sunshine:cloneTable(dataScene)
+        dataSceneCopy.objectType = "Scene"
+        if Sunshine:getEntity(component.head, dataSceneCopy) then
             cFrame = CFrame.new(transform.cFrame.Position + (transform.cFrame.LookVector.Unit * component.distance))
-            local headClone = Sunshine:cloneTable(Sunshine:getEntity(component.head, dataScene))
+            local headClone = Sunshine:cloneTable(Sunshine:getEntity(component.head, dataSceneCopy))
             headClone.core.active = true
             head = Sunshine:createEntity(headClone, entity.core.scene)
         end

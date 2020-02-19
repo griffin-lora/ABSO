@@ -1,4 +1,10 @@
-return function(Sunshine, dataEntity, scene)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "Sunshine",
+    "table",
+    "Scene"
+}, function(Sunshine, dataEntity, scene)
     if dataEntity.core then
         if dataEntity.core.active then
             local entity = {
@@ -37,4 +43,4 @@ return function(Sunshine, dataEntity, scene)
     else
         error("Entity does not have a core component.")
     end
-end
+end)

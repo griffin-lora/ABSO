@@ -1,4 +1,9 @@
-return function(_, component)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "any",
+    "Component"
+}, function(_, component)
     local metatable
     if not getmetatable(component) then
         metatable = {
@@ -31,4 +36,4 @@ return function(_, component)
         metatable = getmetatable(component)
     end
     return metatable
-end
+end)

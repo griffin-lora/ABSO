@@ -1,4 +1,10 @@
-return function(Sunshine, dataScene, index)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "Sunshine",
+    "table",
+    "number"
+}, function(Sunshine, dataScene, index)
     if not Sunshine.managing then
         Sunshine:manage()
     end
@@ -7,13 +13,15 @@ return function(Sunshine, dataScene, index)
         Sunshine:unloadScene(Sunshine.scenes[index])
     end
     Sunshine.dataScenes[index] = dataScene
-    local scene = {}
-    scene.entities = {}
-    scene.active = true
-    scene.index = index
+    local scene = {
+        objectType = "Scene",
+        entities = {},
+        active = true,
+        index = index
+    }
     Sunshine.scenes[index] = scene
     for _, entity in pairs(dataScene.entities) do
         Sunshine:createEntity(entity, scene)
     end
     return scene
-end
+end)

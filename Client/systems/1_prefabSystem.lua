@@ -4,14 +4,17 @@ return function(Sunshine, entity)
     local prefab = entity.prefab
     if prefab then
         prefab.prefab = require(prefab.prefab)
-        for name, component in pairs(prefab.prefab) do
-            if not entity[name] then
-                entity[name] = Sunshine:cloneTable(component)
-                entity[name].objectType = "Component"
+        for componentName, dataComponent in pairs(prefab.prefab) do
+            if not entity[componentName] then
+                local component = { objectType = "Component" }
+                for name, value in pairs(dataComponent) do
+                    component[name] = value
+                end
+                entity[componentName] = component
             else
-                for propertyName, propertyValue in pairs(component) do
-                    if not entity[name][propertyName] then
-                        entity[name][propertyName] = propertyValue
+                for propertyName, propertyValue in pairs(dataComponent) do
+                    if not entity[componentName][propertyName] then
+                        entity[componentName][propertyName] = propertyValue
                     end
                 end
             end

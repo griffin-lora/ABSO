@@ -1,4 +1,10 @@
-return function(Sunshine, orig, copies)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "Sunshine",
+    "any",
+    "any"
+}, function(Sunshine, orig, copies)
     copies = copies or {}
     local orig_type = type(orig)
     local copy
@@ -17,4 +23,4 @@ return function(Sunshine, orig, copies)
         copy = orig
     end
     return copy
-end
+end)

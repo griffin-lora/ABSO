@@ -1,3 +1,4 @@
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
 local VECTOR3_NEW = Vector3.new
 local VECTOR2_NEW = Vector2.new
 
@@ -12,7 +13,13 @@ local enums = {
     [Enum.EasingStyle.Bounce] = "bounce",
 }
 
-return function(Sunshine, time, info, start, goal)
+return typedFunction({
+    "Sunshine",
+    "number",
+    "TweenInfo",
+    "any",
+    "any"
+}, function(Sunshine, time, info, start, goal)
     local type = typeof(start)
     if type ~= "number" then
         if type == "Vector2" then
@@ -43,4 +50,4 @@ return function(Sunshine, time, info, start, goal)
         local value = Sunshine:lerp(start, goal, alpha)
         return value
     end
-end
+end)

@@ -1,5 +1,10 @@
 local exception = "You must publish this place to the web to access DataStore."
-return function(Sunshine, callback)
+local typedFunction = require(game:GetService("ReplicatedStorage"):WaitForChild("typedFunction"))
+
+return typedFunction({
+    "Sunshine",
+    "function"
+}, function(Sunshine, callback)
     local remoteEvent = Sunshine.remoteEvent
     return remoteEvent.OnServerEvent:Connect(function(player, ...)
         local args = {...}
@@ -11,4 +16,4 @@ return function(Sunshine, callback)
             warn(player, " caused error: ", message)
         end
     end)
-end
+end)
