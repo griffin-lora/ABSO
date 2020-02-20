@@ -51,6 +51,7 @@ return function(Sunshine, entity)
                             for _, instance in pairs(sceneEntity.core.instances) do
                                 if instance == selectedInstance then
                                     selectedEntity = sceneEntity
+                                    componentEditor.selectedEntity = selectedEntity
                                 end
                             end
                         end

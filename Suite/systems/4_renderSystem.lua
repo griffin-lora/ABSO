@@ -8,8 +8,6 @@ return function(Sunshine, entity)
         local changeManager
         local lastModel
         local modelInstance
-        local name = model.model.Name
-        local parent = model.model.Parent
         -- local lastSize = Vector3.new(1, 1, 1)
         -- local originalCFrames = {}
         -- for _, descendant in pairs(modelInstance:GetDescendants()) do

@@ -39,10 +39,10 @@ return function(Sunshine, entity)
             end
             loadScenes(loadedSceneInstances)
         end
-        Sunshine:update(function()
-            if button.activated then
+        Sunshine:change(function(activated)
+            if activated then
                 loadScenes(Selection:Get())
             end
-        end, entity)
+        end, entity, button, "activated")
     end
 end

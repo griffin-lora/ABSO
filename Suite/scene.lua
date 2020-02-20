@@ -29,6 +29,7 @@ return {entities = {
             size = Vector2.new(400, 500),
             minSize = Vector2.new(300, 80)
         },
+        tag = { tag = "componentEditor" },
         componentEditor = {
             components = {
                 core = {
@@ -462,7 +463,7 @@ return {entities = {
             active = true
         },
         uiTransform = {
-            position = UDim2.new(0.5, 0, 0.5, 0),
+            position = UDim2.new(0.5, 0, 0.65, 0),
             size = Vector2.new(1, 1),
             rotation = 0,
             zIndex = 0,
@@ -481,6 +482,34 @@ return {entities = {
             font = "GothamBlack"
         },
         loader = {}
+    },
+    -- Create Entity Button
+    {
+        core = {
+            id = "{E4918A2E-98D9-48EC-BD12-A6A66D90FE56}",
+            name = "CreateEntityButton",
+            active = true
+        },
+        uiTransform = {
+            position = UDim2.new(0.5, 0, 0.35, 0),
+            size = Vector2.new(1, 1),
+            rotation = 0,
+            zIndex = 0,
+            anchorPoint = Vector2.new(0.5, 0.5)
+        },
+        frame = {
+            frame = script.Parent.frames.button
+        },
+        parent = {
+            parent = "{3E798C2C-B6C6-4E73-BF9A-7DAFD0B4473F}"
+        },
+        button = {
+            size = UDim2.new(0.6, 0, 0.2, 0),
+            text = "Create Entity",
+            textColor = Color3.fromRGB(69, 189, 117),
+            font = "GothamBlack"
+        },
+        creator = {}
     },
     -- {
     --     core = {

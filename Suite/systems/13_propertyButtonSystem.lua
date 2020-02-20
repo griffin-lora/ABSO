@@ -3,7 +3,7 @@ local CollectionService = game:GetService("CollectionService")
 return function(Sunshine, entity)
     local propertyButton = entity.propertyButton
     local parent = entity.parent
-
+    local changeManager
     if propertyButton and parent then
         local focusedScrollingFrame = Sunshine:getEntity("{8465CE6D-CB7D-4779-8BFE-0AA1C205E188}", entity.core.scene)
         --------------------------------------------------------------------------------------
@@ -23,10 +23,19 @@ return function(Sunshine, entity)
                     local oldText = propertyDescendant.Text
                     --------------------------------------------------------------------------
                     Sunshine:addConnection(propertyDescendant.FocusLost, function()
-                        if ((tonumber(propertyDescendant.Text) and propertyButton.type == "number") or propertyButton.type == "string") and propertyDescendant.Text ~= oldText then
+                        if not changeManager then
+                            for _, otherEntity in pairs(Sunshine.scenes[1].entities) do
+                                if otherEntity.tag and otherEntity.tag.tag == "changeManager" then
+                                    changeManager = otherEntity
+                                    break
+                                end
+                            end
+                        end
+                        if ((tonumber(propertyDescendant.Text) and propertyButton.type == "number") or
+                        propertyButton.type == "string") and propertyDescendant.Text ~= oldText then
                             changeManager.change.entity = propertyButton.entity
-                            changeManager.change.componentName = name
-                            changeManager.change.propertyName = name
+                            changeManager.change.componentName = propertyButton.componentName
+                            changeManager.change.propertyName = propertyButton.propertyName
                             if propertyButton.type == "number" then
                                 changeManager.change.propertyValue = tonumber(propertyDescendant.Text)
                             else
