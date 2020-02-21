@@ -39,7 +39,7 @@ return function(Sunshine, entity)
             end
             if model.model and lastModel ~= model.model then
                 if not model.model.PrimaryPart then
-                    error(model.model:GetFullName())
+                    error(model.model:GetFullName() .. " doesn't have a primary part.")
                 end
                 if modelInstance then
                     modelInstance:Destroy()

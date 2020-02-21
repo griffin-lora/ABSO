@@ -63,7 +63,7 @@ return function(Sunshine, entity)
                 for _, sceneEntity in pairs(entity.core.scene.entities) do
                     if sceneEntity.tag then
                         if sceneEntity.tag.tag == "entitySelectedText" then
-                            sceneEntity.label.text = "Selected "..selectedEntity.core.name
+                            sceneEntity.label.text = "Selected \"" .. selectedEntity.core.name .. "\""
                         elseif sceneEntity.tag.tag == "focusedComponentFrame" then
                             sceneEntity.visible.visible = false
                         elseif sceneEntity.tag.tag == "componentBackButton" then

@@ -152,7 +152,14 @@ return {entities = {
                 },
                 button = {
                     activated = {type = "boolean", default = false},
-                    size = {type = "UDim2", default = UDim2.new(0, 100, 0, 100)}
+                    size = {type = "UDim2", default = UDim2.new(0, 100, 0, 100)},
+                    text = {type = "string", default = ""}
+                },
+                box = {
+                    focused = {type = "boolean", default = false},
+                    enterPressed = {type = "boolean", default = false},
+                    size = {type = "UDim2", default = UDim2.new(0, 100, 0, 100)},
+                    text = {type = "string", default = ""}
                 },
                 sound = {
                     id = {type = "number", default = 0},
@@ -774,4 +781,39 @@ return {entities = {
             tag = "changeManager"
         }
     },
+    -- add component box
+    {
+        core = {
+            name = "addComponentBox",
+            id = "{8E726647-B3BE-4BDD-9380-80102CB635BB}",
+            active = true
+        },
+        parent = {
+            parent = "{BC51A2F2-3163-4DF7-95BA-68750BA7B7CF}"
+        },
+        frame = {
+            frame = script.Parent.frames.box
+        },
+        box = {
+            size = UDim2.new(0.5, 0, 0.5, 0),
+            text = "",
+            placeholderText = "Add Component",
+            textColor = Color3.fromRGB(255, 255, 255),
+            font = "SourceSans"
+        },
+        tag = {
+            tag = "addComponentBox"
+        },
+        visible = {
+            visible = false
+        },
+        uiTransform = {
+            position = UDim2.new(0.5, 0, 0.9, 0),
+            size = Vector2.new(1.7, 0.2),
+            rotation = 0,
+            zIndex = 1,
+            anchorPoint = Vector2.new(0.5, 0.5)
+        },
+        addComponent = {}
+    }
 }}

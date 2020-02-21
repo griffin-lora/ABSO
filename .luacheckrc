@@ -38,7 +38,8 @@ std = {
         "wait",
         "rawget",
         "rawequal",
-        "assert"
+        "assert",
+        "rawset"
     }
 }
 ignore = {"Assets/prefabs/camera.lua"}
