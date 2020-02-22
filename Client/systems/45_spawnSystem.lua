@@ -3,7 +3,6 @@ return function(Sunshine, entity)
     local store = entity.store
     local transform = entity.transform
     if spawn and store and transform then
-        local player
         local lastActive = true
         local loaded = false
         Sunshine:update(function()
@@ -14,18 +13,6 @@ return function(Sunshine, entity)
             end
             if store.save then
                 store.save.spawn.active = spawn.active
-                if not player then
-                    for _, otherEntity in pairs(entity.core.scene.entities) do
-                        if otherEntity.tag and otherEntity.tag.tag == "player" then
-                            player = otherEntity
-                            break
-                        end
-                    end
-                    if spawn.active then
-                        local mainCharacter = Sunshine:getEntity(player.player.character, entity.core.scene)
-                        mainCharacter.transform.cFrame = transform.cFrame
-                    end
-                end
                 if spawn.active and spawn.active ~= lastActive then
                     for _, otherEntity in pairs(entity.core.scene.entities) do
                         local otherSpawn = otherEntity.spawn

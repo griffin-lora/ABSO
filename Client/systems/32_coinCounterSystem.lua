@@ -9,7 +9,7 @@ return function(Sunshine, entity)
     if coinCounter and frame then
         Sunshine:update(function()
             if Sunshine.scenes[1] then
-                local player = Sunshine:getEntity(coinCounter.player, Sunshine.scenes[1])
+                local player = Sunshine:getEntityByTag(coinCounter.playerTag)
                 if player then
                     local stats = player.stats
                     if stats then

@@ -3,8 +3,8 @@
 return function(Sunshine, entity)
     local prefab = entity.prefab
     if prefab then
-        prefab.prefab = require(prefab.prefab)
-        for componentName, dataComponent in pairs(prefab.prefab) do
+        prefab.dataPrefab = require(prefab.prefab)
+        for componentName, dataComponent in pairs(prefab.dataPrefab) do
             if not entity[componentName] then
                 local component = { objectType = "Component" }
                 for name, value in pairs(dataComponent) do
@@ -19,8 +19,8 @@ return function(Sunshine, entity)
                 end
             end
         end
-        if prefab.prefab.core then
-            entity.core.id = prefab.prefab.core.id
+        if prefab.dataPrefab.core then
+            entity.core.id = prefab.dataPrefab.core.id
         end
         entity.core.active = true
     end

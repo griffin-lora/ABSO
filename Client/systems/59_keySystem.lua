@@ -17,7 +17,7 @@ return function(Sunshine, entity)
     local originalAngle
     if key and collider and spinner and transparency and oscillator and transform and respawner then
         local oldFrame = transform.cFrame
-        local script = Sunshine:getEntity(key.scriptCollectible, entity.core.scene)
+        local script = key.scriptCollectible
         if script then
             script.spinner.speed = 0
             if originalAngle then
@@ -45,9 +45,9 @@ return function(Sunshine, entity)
                                 collected = true
                                 startTick = entity.core.tick
                                 key.active = true
-                                camera = Sunshine:getEntity(character.input.camera, entity.core.scene)
+                                camera = character.input.camera
                                 for _,p in pairs(entity.core.scene.entities) do
-                                    local otherEntity = Sunshine:getEntity(p, entity.core.scene)
+                                    local otherEntity = p
                                     if otherEntity.core.id ~= script.core.id and otherEntity.core.id ~= camera.core.id and otherEntity.core.id ~= entity.core.id then
                                         table.insert(pausedEntities, #pausedEntities+1, {p, otherEntity.core.active or false})
                                         otherEntity.core.active = false
@@ -85,7 +85,7 @@ return function(Sunshine, entity)
                             character.character.controllable = true
                             key.active = false
                             for _,p in pairs(pausedEntities) do
-                                local otherEntity = Sunshine:getEntity(p[1], entity.core.scene)
+                                local otherEntity = p[1]
                                 if otherEntity then
                                     otherEntity.core.active = p[2]
                                 end

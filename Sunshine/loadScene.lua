@@ -21,7 +21,10 @@ return typedFunction({
     }
     Sunshine.scenes[index] = scene
     for _, entity in pairs(dataScene.entities) do
-        Sunshine:createEntity(entity, scene)
+        Sunshine:initEntity(entity, scene)
+    end
+    for _, entity in pairs(scene.entities) do
+        Sunshine:startEntity(entity, scene)
     end
     return scene
 end)

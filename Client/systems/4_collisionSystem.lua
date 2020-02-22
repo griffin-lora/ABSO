@@ -7,7 +7,7 @@ return function(Sunshine, entity)
         collider.hitEntities = {}
         Sunshine:addConnection(model.model.PrimaryPart.Touched, function(part)
             if collider.trigger and part.Parent and part.Parent:IsA("Model") and part.Parent.PrimaryPart == part then
-                local hitEntity = Sunshine:getEntity(part.Parent.Name, entity.core.scene)
+                local hitEntity = Sunshine:getEntityById(part.Parent.Name)
                 if hitEntity and hitEntity.collider and not hitEntity.collider.anchored then
                     collider.hitEntities[#collider.hitEntities + 1] = hitEntity
                     -- this is so the metatable registers the change
@@ -17,7 +17,7 @@ return function(Sunshine, entity)
         end, entity)
         Sunshine:addConnection(model.model.PrimaryPart.TouchEnded, function(part)
             if collider.trigger and part.Parent and part.Parent:IsA("Model") and part.Parent.PrimaryPart == part then
-                local hitEntity = Sunshine:getEntity(part.Parent.Name, entity.core.scene)
+                local hitEntity = Sunshine:getEntityById(part.Parent.Name)
                 if hitEntity and hitEntity.collider and not hitEntity.collider.anchored then
                     for index, otherEntity in pairs(collider.hitEntities) do
                         if otherEntity == hitEntity then
@@ -35,7 +35,7 @@ return function(Sunshine, entity)
             for _, part in pairs(parts) do
                 if collider.trigger and part.Parent and part.Parent:IsA("Model") and part.Parent.PrimaryPart == part
                 then
-                    local hitEntity = Sunshine:getEntity(part.Parent.Name, entity.core.scene)
+                    local hitEntity = Sunshine:getEntityById(part.Parent.Name)
                     if hitEntity and hitEntity.collider and hitEntity.collider.anchored then
                         collider.hitEntities[#collider.hitEntities + 1] = hitEntity
                         -- this is so the metatable registers the change

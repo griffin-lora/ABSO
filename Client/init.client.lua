@@ -5,6 +5,7 @@ local player = game:GetService("Players").LocalPlayer
 game:GetService("StarterGui"):SetCore("TopbarEnabled", false)
 
 Sunshine:addSystemFolder(script:WaitForChild("systems"))
+Sunshine:setComponentInterfaces(require(script:WaitForChild("componentInterfaces")))
 Sunshine:loadScene(require(Assets:WaitForChild("scenes").TitleScreen))
 Sunshine:loadScene(require(Assets.scenes.uiScene), 2)
 

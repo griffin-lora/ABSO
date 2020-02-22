@@ -34,10 +34,10 @@ return function(Sunshine, entity)
                 hitEntity.character.player)) and not collected then
                     local player
                     if hitEntity.character then
-                        player = Sunshine:getEntity(hitEntity.character.player, entity.core.scene)
+                        player = hitEntity.character.player
                     elseif hitEntity.head then
-                        local character = Sunshine:getEntity(hitEntity.head.character, entity.core.scene)
-                        player = Sunshine:getEntity(character.character.player, entity.core.scene)
+                        local character = hitEntity.head.character
+                        player = character.character.player
                     end
                     startTick = entity.core.tick
                     collected = true

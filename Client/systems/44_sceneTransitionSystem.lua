@@ -16,22 +16,19 @@ return function(Sunshine, entity)
         Sunshine:update(function()
             if sceneTransition.loading then
                 if lastLoading ~= sceneTransition.loading then
-                    local player
-                    for _, otherEntity in pairs(Sunshine.scenes[1].entities) do
-                        if otherEntity.tag and otherEntity.tag.tag == "player" then
-                            player = otherEntity
-                            break
-                        end
-                    end
+                    local player = Sunshine:getEntityByTag("player")
                     unloading = true
                     local cutoutLabel
                     for _, descendant in pairs(frame.frame:GetDescendants()) do
                         if CollectionService:HasTag(descendant, "cutoutLabel") then
                             cutoutLabel = descendant
+                            break
                         end
                     end
                     if sceneTransition.type == "death" then
-                        local screenPoint = workspace.Camera:WorldToScreenPoint(Sunshine:getEntity(player.player.mainCharacter, Sunshine.scenes[1]).transform.cFrame.Position)
+                        local screenPoint = workspace.Camera:WorldToScreenPoint(
+                            player.player.mainCharacter.transform.cFrame.Position
+                        )
                         uiTransform.position = UDim2.new(0, screenPoint.X, 0, screenPoint.Y + 30)
                         cutoutLabel.Image = "rbxassetid://2396957701"
                         dataScene = Sunshine.dataScenes[1]

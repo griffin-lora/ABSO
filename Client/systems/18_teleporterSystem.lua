@@ -11,13 +11,7 @@ return function(Sunshine, entity)
                 if hitEntity and hitEntity.character and
                 hitEntity.character.controllable then
                     teleporter.activated = true
-                    local cutout
-                    for _, otherEntity in pairs(Sunshine.scenes[2].entities) do
-                        if otherEntity.tag and otherEntity.tag.tag == "sceneTransition" then
-                            cutout = otherEntity
-                            break
-                        end
-                    end
+                    local cutout = Sunshine:getEntityByTag("sceneTransition")
                     cutout.sceneTransition.scene = scene
                     cutout.sceneTransition.type = "teleport"
                     cutout.sceneTransition.loading = true
@@ -27,13 +21,7 @@ return function(Sunshine, entity)
             Sunshine:change(function(activated)
                 if activated then
                     teleporter.activated = true
-                    local cutout
-                    for _, otherEntity in pairs(Sunshine.scenes[2].entities) do
-                        if otherEntity.tag and otherEntity.tag.tag == "sceneTransition" then
-                            cutout = otherEntity
-                            break
-                        end
-                    end
+                    local cutout = Sunshine:getEntityByTag("sceneTransition")
                     cutout.sceneTransition.scene = scene
                     cutout.sceneTransition.type = "teleport"
                     cutout.sceneTransition.loading = true

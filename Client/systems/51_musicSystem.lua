@@ -12,14 +12,16 @@ return function(Sunshine, entity)
         Sunshine:update(function()
             if Sunshine.scenes[1] then
                 lastUnload = false
-                local music = Sunshine:getEntity(musicTracker.entity, Sunshine.scenes[1])
+                local music = Sunshine:getEntityByTag(musicTracker.entityTag)
                 if music then
                     if not lastLoad then
                         loadStartTick = entity.core.tick
                     end
                     lastLoad = true
                     sound.id = music.music.id
-                    sound.volume = Sunshine:tween(entity.core.tick - loadStartTick, TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In, 0, false, 0), oldVolume, music.music.volume)
+                    sound.volume = Sunshine:tween(entity.core.tick - loadStartTick,
+                    TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In, 0, false, 0),
+                    oldVolume, music.music.volume)
                     lowVolume = music.music.volume/2
                     if Sunshine.scenes[1].active == true then
                         sound.playing = not music.music.paused

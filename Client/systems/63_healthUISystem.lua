@@ -14,9 +14,9 @@ return function(Sunshine, entity)
     if healthUI and frame then
         Sunshine:update(function()
             if Sunshine.scenes[1] then
-                local player = Sunshine:getEntity(healthUI.player, Sunshine.scenes[1])
+                local player = Sunshine:getEntityByTag(healthUI.playerTag)
                 if player then
-                    local mainCharacter = Sunshine:getEntity(player.player.mainCharacter, Sunshine.scenes[1])
+                    local mainCharacter = player.player.mainCharacter
                     if mainCharacter then
                         local health = mainCharacter.health
                         if not lastHealth then

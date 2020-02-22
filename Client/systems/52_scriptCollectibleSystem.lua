@@ -16,7 +16,7 @@ return function(Sunshine, entity)
                 hitEntity.character.controllable and collider.trigger then
                     scriptCollectible.active = true
                     character = hitEntity
-                    camera = Sunshine:getEntity(character.input.camera, entity.core.scene)
+                    camera = character.input.camera
                     character.animator.action = 1076799780
                     character.input.moveVector = Vector3.new(0,0,0)
                     character.character.controllable = false
@@ -34,7 +34,7 @@ return function(Sunshine, entity)
                     spinner.speed = 0
                     startTick = entity.core.tick
                     for _,p in pairs(entity.core.scene.entities) do
-                        local otherEntity = Sunshine:getEntity(p, entity.core.scene)
+                        local otherEntity = p
                         if otherEntity.core.id ~= character.core.id and otherEntity.core.id ~= camera.core.id and
                         otherEntity.core.id ~= entity.core.id then
                             table.insert(pausedEntities, #pausedEntities+1, {p, otherEntity.core.active or false})
@@ -54,7 +54,7 @@ return function(Sunshine, entity)
                     character.character.controllable = true
                     camera.camera.controllable = true
                     for _,p in pairs(pausedEntities) do
-                        local otherEntity = Sunshine:getEntity(p[1], entity.core.scene)
+                        local otherEntity = p[1]
                         if otherEntity then
                             if otherEntity.music then
                                 otherEntity.music.paused = false

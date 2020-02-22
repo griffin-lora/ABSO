@@ -59,7 +59,7 @@ return function(Sunshine, entity)
             input.e = e or
             UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonY) or
             UserInputService:IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonX)
-            local camera = Sunshine:getEntity(input.camera, entity.core.scene)
+            local camera = input.camera
             if camera and camera.transform then
                 local cameraCFrame = CFrame.new(vector3New(), vector3New(camera.transform.cFrame.LookVector.X,
                 0, camera.transform.cFrame.LookVector.Z))
