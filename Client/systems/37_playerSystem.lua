@@ -5,9 +5,9 @@ return function(Sunshine, entity)
     if player then
         local lastCharacter
         Sunshine:update(function()
-            local mainCharacter = player.mainCharacter
-            local character = player.character
-            local camera = player.camera
+            local mainCharacter = Sunshine:getEntityByTag(player.mainCharacterTag)
+            local character = Sunshine:getEntityByTag(player.characterTag)
+            local camera = Sunshine:getEntityByTag(player.cameraTag)
             if mainCharacter and character and camera then
                 character.character.player = entity
                 character.input.camera = camera

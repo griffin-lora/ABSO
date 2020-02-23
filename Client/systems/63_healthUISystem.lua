@@ -16,7 +16,7 @@ return function(Sunshine, entity)
             if Sunshine.scenes[1] then
                 local player = Sunshine:getEntityByTag(healthUI.playerTag)
                 if player then
-                    local mainCharacter = player.player.mainCharacter
+                    local mainCharacter = Sunshine:getEntityByTag(player.player.mainCharacterTag)
                     if mainCharacter then
                         local health = mainCharacter.health
                         if not lastHealth then

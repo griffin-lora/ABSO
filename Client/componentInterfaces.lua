@@ -43,7 +43,19 @@ return {
     },
     character = {
         controllable = {type = "boolean", default = false},
+        --
+        grounded = {type = "boolean", default = false, editable = false},
+        moving = {type = "boolean", default = false, editable = false},
+        onWall = {type = "boolean", default = false, editable = false},
+        swimming = {type = "boolean", default = false, editable = false},
         canLoseMagnitude = {type = "boolean", default = false, editable = false},
+        --
+        floor = {type = "Instance", default = nil, editable = false},
+        wall = {type = "Instance", default = nil, editable = false},
+        --
+        wallNormal = {type = "Vector3", default = nil, editable = false},
+        moveVector = {type = "Vector3", default = nil, editable = false},
+        --
         shirtGraphic = {type = "string", default = ""},
         shirtGraphicColor = {type = "Color3", default = Color3.fromRGB(255, 255, 255)},
         shirt = {type = "string", default = ""},
@@ -438,6 +450,7 @@ return {
         id = {type = "number", default = 0},
         playing = {type = "boolean", default = false},
         volume = {type = "number", default = 1},
+        sounds = {type = "number", default = 0}
     },
     swingingUprightPlatform = {
         speed = {type = "number", default = 2},

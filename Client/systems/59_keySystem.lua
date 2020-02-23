@@ -18,7 +18,7 @@ return function(Sunshine, entity)
     if key and collider and spinner and transparency and oscillator and transform and respawner then
         local oldFrame = transform.cFrame
         local script = key.scriptCollectible
-        if script then
+        if script and script.spinner then
             script.spinner.speed = 0
             if originalAngle then
                 script.transform.cFrame = originalAngle + script.transform.cFrame.Position

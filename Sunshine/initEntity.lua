@@ -33,11 +33,20 @@ return typedFunction({
                         local component = { objectType = "Component" }
                         Sunshine:createMetatable(component, componentInterface, componentName)
                         for name, value in pairs(dataComponent) do
-                            component[name] = value
+                            if typeof(value) ~= "table" then
+                                component[name] = value
+                            else
+                                component[name] = Sunshine:cloneTable(value)
+                            end
                         end
                         for name, propertyInterface in pairs(componentInterface) do
                             if not component[name] then
-                                component[name] = propertyInterface.default
+                                local value = propertyInterface.default
+                                if typeof(value) ~= "table" then
+                                    component[name] = value
+                                else
+                                    component[name] = Sunshine:cloneTable(value)
+                                end
                             end
                         end
                         entity[componentName] = component
@@ -58,7 +67,11 @@ return typedFunction({
                             end
                             for name, value in pairs(dataComponent) do
                                 if not component[name] then
-                                    component[name] = value
+                                    if typeof(value) ~= "table" then
+                                        component[name] = value
+                                    else
+                                        component[name] = Sunshine:cloneTable(value)
+                                    end
                                 end
                             end
                             entity[componentName] = component

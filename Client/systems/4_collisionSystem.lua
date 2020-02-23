@@ -4,7 +4,6 @@ return function(Sunshine, entity)
     local collider = entity.collider
     local model = entity.model
     if collider and model then
-        collider.hitEntities = {}
         Sunshine:addConnection(model.model.PrimaryPart.Touched, function(part)
             if collider.trigger and part.Parent and part.Parent:IsA("Model") and part.Parent.PrimaryPart == part then
                 local hitEntity = Sunshine:getEntityById(part.Parent.Name)
@@ -43,6 +42,9 @@ return function(Sunshine, entity)
                         foundHitEntities[#foundHitEntities + 1] = hitEntity
                     end
                 end
+            end
+            if not collider.hitEntities then
+                error("FUCK THIS SHIT")
             end
             for index, hitEntity in pairs(collider.hitEntities) do
                 if hitEntity.collider.anchored then

@@ -6,7 +6,7 @@ game:GetService("StarterGui"):SetCore("TopbarEnabled", false)
 
 Sunshine:addSystemFolder(script:WaitForChild("systems"))
 Sunshine:setComponentInterfaces(require(script:WaitForChild("componentInterfaces")))
-Sunshine:loadScene(require(Assets:WaitForChild("scenes").TitleScreen))
+Sunshine:loadScene(require(Assets:WaitForChild("scenes").CrossroadsDay))
 Sunshine:loadScene(require(Assets.scenes.uiScene), 2)
 
 game:GetService("RunService").Heartbeat:Connect(function()

@@ -35,6 +35,9 @@ return typedFunction({
                 end
             end,
             __index = function(_, property)
+                if property == "hitEntities" or property == "save" then
+                    return {}
+                end
                 local propertyInterface = metatable.componentInterface[property]
                 if propertyInterface then
                     local value

@@ -18,16 +18,16 @@ return function(Sunshine, entity)
     local lastActive
     Sunshine:createStateSystem(entity, state, function()
         -- start check
-        return not head.core.active and character.state ~= "groundPound" and character.state ~= "crouch" and character.state ~= "bonk" and character.state ~= "dive" and input.e and
-        not lastE
+        return not head.core.active and character.state ~= "groundPound" and character.state ~= "crouch"
+        and character.state ~= "bonk" and character.state ~= "dive" and input.e and not lastE
     end, function()
         -- start
         local dataScene = Sunshine.dataScenes[entity.core.scene.index]
         local dataSceneCopy = Sunshine:cloneTable(dataScene)
         dataSceneCopy.objectType = "Scene"
-        if Sunshine:getEntityById(component.head, dataSceneCopy) then
+        if Sunshine:getEntityByTag(component.headTag, dataSceneCopy) then
             cFrame = CFrame.new(transform.cFrame.Position + (transform.cFrame.LookVector.Unit * component.distance))
-            local headClone = Sunshine:cloneTable(Sunshine:getEntityById(component.head, dataSceneCopy))
+            local headClone = Sunshine:cloneTable(Sunshine:getEntityByTag(component.headTag, dataSceneCopy))
             headClone.core.active = true
             head = Sunshine:createEntity(headClone, entity.core.scene)
         end
