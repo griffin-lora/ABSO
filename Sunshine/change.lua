@@ -6,9 +6,9 @@ return typedFunction({
     "Entity",
     "Component",
     "string"
-}, function(Sunshine, callback, entity, component, property)
+}, function(_, callback, entity, component, property)
     local value = component[property]
-    local metatable = Sunshine:createMetatable(component)
+    local metatable = getmetatable(component)
     metatable.properties[property] = value
     component[property] = nil
     metatable.callbacks[#metatable.callbacks + 1] = {true, callback, property}

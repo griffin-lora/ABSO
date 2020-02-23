@@ -43,7 +43,7 @@ return function(Sunshine, entity)
         Sunshine:addConnection(UserInputService.InputChanged, handleInput, entity, true)
         Sunshine:addConnection(UserInputService.InputEnded, handleInput, entity, true)
         Sunshine:update(function(step)
-            local subject = camera.subject
+            local subject = Sunshine:getEntityByTag(camera.subjectTag)
             if subject and camera.controllable then
                 zoom = zoom - (mouseScrollWheel * camera.scrollSpeed)
                 zoom = math.clamp(zoom, camera.minZoom, camera.maxZoom)

@@ -135,7 +135,7 @@ return function(Sunshine, entity)
                 lastVelocity = velocity
                 lastGroundeds[2] = lastGroundeds[1]
                 lastGroundeds[1] = character.grounded
-                if health and tag and tag.tag == "character" then
+                if health and tag and tag.tag == "mainCharacter" then
                     if health.health <= 0 then
                         local cutout = Sunshine:getEntityByTag("sceneTransition")
                         cutout.sceneTransition.type = "death"

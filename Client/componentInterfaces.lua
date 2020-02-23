@@ -1,7 +1,7 @@
 return {
     prefab = {
         prefab = {type = "Instance", default = nil},
-        dataPrefab = {type = "table", default = nil}
+        dataPrefab = {type = "table", default = nil, editable = false}
     },
     model = {
         model = {type = "Instance", default = nil}
@@ -30,7 +30,7 @@ return {
     collider = {
         trigger = {type = "boolean", default = false},
         anchored = {type = "boolean", default = false},
-        hitEntities = {type = "table", default = {}}
+        hitEntities = {type = "table", default = {}, editable = false}
     },
     collectible = {
     },
@@ -38,23 +38,24 @@ return {
         moveVector = {type = "Vector3", default = Vector3.new()},
         space = {type = "boolean", default = false},
         shift = {type = "boolean", default = false},
-        camera = {type = "Entity", default = nil},
+        cameraTag = {type = "string", default = ""},
+        e = {type = "boolean", default = false, editable = false}
     },
     character = {
         controllable = {type = "boolean", default = false},
-        canLoseMagnitude = {type = "boolean", default = false},
-        -- shirtGraphic = {type = "string", default = ""},
-        -- shirtGraphicColor = {type = "Color3", default = Color3.fromRGB(255, 255, 255)},
-        -- shirt = {type = "string", default = ""},
-        -- shirtColor = {type = "Color3", default = Color3.fromRGB(255, 255, 255)},
-        -- pants = {type = "string", default = ""},
-        -- pantsColor = {type = "Color3", default = Color3.fromRGB(255, 255, 255)},
-        -- headColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
-        -- leftArmColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
-        -- leftLegColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
-        -- rightArmColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
-        -- rightLegColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
-        -- torsoColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
+        canLoseMagnitude = {type = "boolean", default = false, editable = false},
+        shirtGraphic = {type = "string", default = ""},
+        shirtGraphicColor = {type = "Color3", default = Color3.fromRGB(255, 255, 255)},
+        shirt = {type = "string", default = ""},
+        shirtColor = {type = "Color3", default = Color3.fromRGB(255, 255, 255)},
+        pants = {type = "string", default = ""},
+        pantsColor = {type = "Color3", default = Color3.fromRGB(255, 255, 255)},
+        headColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
+        leftArmColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
+        leftLegColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
+        rightArmColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
+        rightLegColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
+        torsoColor = {type = "Color3", default = Color3.fromRGB(163, 162, 165)},
         walkSpeed = {type = "number", default = 16},
         walkSpeedFactor = {type = "number", default = 1},
         moveAnimation = {type = "number", default = 0},
@@ -62,6 +63,9 @@ return {
         fallAnimation = {type = "number", default = 0},
         swimAnimation = {type = "number", default = 0},
         sinkAnimation = {type = "number", default = 0},
+        movable = {type = "boolean", default = true},
+        cameraTag = {type = "string", default = ""},
+        state = {type = "string", default = nil, editable = false}
     },
     charData = {
         coins = {type = "number", default = 0}
@@ -86,7 +90,7 @@ return {
     },
     camera = {
         controllable = {type = "boolean", default = false},
-        subject = {type = "Entity", default = nil},
+        subjectTag = {type = "string", default = ""},
         fieldOfView = {type = "number", default = 70},
         rotateSpeed = {type = "number", default = 0.5},
         scrollSpeed = {type = "number", default = 5},
@@ -99,6 +103,14 @@ return {
         axis = {type = "string", default = "y"}
     },
     animator = {
+        core = {type = "number", default = nil},
+        idle = {type = "number", default = nil},
+        movement = {type = "number", default = nil},
+        action = {type = "number", default = nil},
+        coreSpeed = {type = "number", default = 1},
+        idleSpeed = {type = "number", default = 1},
+        movementSpeed = {type = "number", default = 1},
+        actionSpeed = {type = "number", default = 1},
     },
     frame = {
         frame = {type = "Instance", default = nil}
@@ -131,7 +143,8 @@ return {
         id = {type = "number", default = 0},
         playing = {type = "boolean", default = false},
         volume = {type = "number", default = 0.5},
-        looped = {type = "boolean", default = false}
+        looped = {type = "boolean", default = false},
+        autoStop = {type = "boolean", default = true}
     },
     animation = {
         id = {type = "number", default = 0},
@@ -223,7 +236,7 @@ return {
         power = {type = "number", default = 50},
         distance = {type = "number", default = 20},
         animation = {type = "number", default = 0},
-        head = {type = "string", default = ""},
+        headTag = {type = "string", default = ""},
         sound = {type = "number", default = 0}
     },
 
@@ -231,6 +244,7 @@ return {
         health = {type = "number", default = 3},
         time = {type = "number", default = 2},
         invulnerabilityFrames = {type = "boolean", default = true},
+        invulnerable = {type = "boolean", default = false}
     },
 
     bounce = {
@@ -269,6 +283,7 @@ return {
     wallSlide = {
         animation = {type = "number", default = 0},
         speed = {type = "number", default = -50},
+        factor = {type = "number", default = 0.8}
     },
 
     wallJump = {
@@ -282,9 +297,9 @@ return {
     },
 
     player = {
-        mainCharacter = {type = "Entity", default = nil},
-        character = {type = "Entity", default = nil},
-        camera = {type = "Entity", default = nil}
+        mainCharacterTag = {type = "string", default = ""},
+        characterTag = {type = "string", default = ""},
+        cameraTag = {type = "string", default = ""}
     },
     doubleJump = {
         power = {type = "number", default = 50},
@@ -393,7 +408,7 @@ return {
     },
 
     crackedWall = {
-        animation =  {type = "number", default = 0},
+        animation = {type = "number", default = 0},
         time = {type = "number", default = 0}
     },
     hydrophobic = {
@@ -401,7 +416,9 @@ return {
     bonk = {
         power = {type = "number", default = 20},
         animation = {type = "number", default = 0},
-        sound = {type = "number", default = 0}
+        doAnimation = {type = "number", default = 0},
+        sound = {type = "number", default = 0},
+        walkSpeedFactor = {type = "number", default = 0.05}
     },
     gravity = {
         ignore = {type = "boolean", default = true}
@@ -434,5 +451,12 @@ return {
     distancePause = {
         disabled = {type = "boolean", default = true},
         distance = {type = "number", default = 250}
+    },
+    textureScroller = {
+        incrementU = {type = "number", default = 0.1},
+        incrementV = {type = "number", default = 0.1}
+    },
+    costumeChanger = {
+        currentCostume = {type = "string", default = "Default"}
     }
 }
