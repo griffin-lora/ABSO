@@ -9,7 +9,7 @@ return function(Sunshine, entity)
         local canBounce = true
         local first = true
         Sunshine:update(function(step)
-            local character = head.character
+            local character = Sunshine:getEntityByTag(head.characterTag)
             if head.cFrame and active then
                 if first then
                     transform.cFrame = character.transform.cFrame

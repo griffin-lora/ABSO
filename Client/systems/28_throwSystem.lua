@@ -22,12 +22,10 @@ return function(Sunshine, entity)
         and character.state ~= "bonk" and character.state ~= "dive" and input.e and not lastE
     end, function()
         -- start
-        local dataScene = Sunshine.dataScenes[entity.core.scene.index]
-        local dataSceneCopy = Sunshine:cloneTable(dataScene)
-        dataSceneCopy.objectType = "Scene"
-        if Sunshine:getEntityByTag(component.headTag, dataSceneCopy) then
+        local inactiveHead = Sunshine:getEntityByTag(component.headTag)
+        if inactiveHead then
             cFrame = CFrame.new(transform.cFrame.Position + (transform.cFrame.LookVector.Unit * component.distance))
-            local headClone = Sunshine:cloneTable(Sunshine:getEntityByTag(component.headTag, dataSceneCopy))
+            local headClone = Sunshine:cloneTable(inactiveHead.core.dataEntity)
             headClone.core.active = true
             head = Sunshine:createEntity(headClone, entity.core.scene)
         end

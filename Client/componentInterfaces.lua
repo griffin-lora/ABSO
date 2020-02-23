@@ -228,10 +228,12 @@ return {
         speed = {type = "number", default = 1}
     },
     head = {
-        character = {type = "Entity", default = nil},
+        characterTag = {type = "string", default = ""},
         time = {type = "number", default = 2},
         holdTime = {type = "number", default = 5},
         bounceTime = {type = "number", default = 0.5},
+        active = {type = "boolean", default = true, editable = false},
+        cFrame = {type = "CFrame", default = nil, editable = false},
     },
 
     bouncer = {
