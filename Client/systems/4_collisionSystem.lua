@@ -43,9 +43,6 @@ return function(Sunshine, entity)
                     end
                 end
             end
-            if not collider.hitEntities then
-                error("FUCK THIS SHIT")
-            end
             for index, hitEntity in pairs(collider.hitEntities) do
                 if hitEntity.collider.anchored then
                     local found = false
