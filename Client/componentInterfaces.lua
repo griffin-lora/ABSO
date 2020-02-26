@@ -77,7 +77,8 @@ return {
         sinkAnimation = {type = "number", default = 0},
         movable = {type = "boolean", default = true},
         cameraTag = {type = "string", default = ""},
-        state = {type = "string", default = nil, editable = false}
+        state = {type = "string", default = nil, editable = false},
+        player = {type = "Entity", default = nil, editable = false}
     },
     charData = {
         coins = {type = "number", default = 0}
