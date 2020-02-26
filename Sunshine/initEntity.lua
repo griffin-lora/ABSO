@@ -73,6 +73,16 @@ return typedFunction({
                                 end
                             end
                         end
+                        for name, propertyInterface in pairs(componentInterface) do
+                            if not component[name] then
+                                local value = propertyInterface.default
+                                if typeof(value) ~= "table" then
+                                    component[name] = value
+                                else
+                                    component[name] = Sunshine:cloneTable(value)
+                                end
+                            end
+                        end
                         entity[componentName] = component
                     else
                         error("Component " .. componentName .. " does not exist.")
