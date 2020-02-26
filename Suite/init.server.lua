@@ -13,8 +13,8 @@ if game:GetService("RunService"):IsEdit() then
     Sunshine.gui = Instance.new("ScreenGui")
     Sunshine.gui.Name = "SunshineSuiteScreenGui"
     Sunshine.gui.IgnoreGuiInset = true -- why does this property need to exist it should always be true
-    Sunshine.gui.ResetOnSpawn = false -- again should always be false
-    Sunshine.gui.Parent = game:GetService("CoreGui") -- ANGERY
+    Sunshine.gui.ResetOnSpawn = false -- this should always be false, again why does it exist
+    Sunshine.gui.Parent = game:GetService("CoreGui") -- TANGERINE
     Sunshine.plugin = plugin
     Sunshine.PluginNetworkClient = PluginNetworkClient
     PluginNetworkClient:init(plugin)
