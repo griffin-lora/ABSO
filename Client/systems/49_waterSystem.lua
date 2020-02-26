@@ -9,9 +9,9 @@ return function(Sunshine, entity)
     local collider = entity.collider
     if water and collider and model and transform then
         local character
-        Sunshine:update(function()
+        Sunshine:change(function(hitEntities)
             local touchedEntity
-            for _,hitEntity in pairs(collider.hitEntities) do
+            for _,hitEntity in pairs(hitEntities) do
                 if hitEntity and hitEntity.hydrophobic and hitEntity.health then
                     hitEntity.health.health = 0
                 elseif hitEntity and hitEntity.character and hitEntity.character.controllable
@@ -31,6 +31,6 @@ return function(Sunshine, entity)
                     p.CFrame = CFrame.new(transform.cFrame.Position + Vector3.new(0,transform.size.Y/2,0))
                 end
             end
-        end, entity)
+        end, entity, collider, "hitEntities")
     end
 end

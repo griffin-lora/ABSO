@@ -222,6 +222,7 @@ return {
         sound = {type = "number", default = 0}
     },
     store = {
+        save = {type = "table", default = nil}
     },
     moving = {
         extend = {type = "CFrame", default = CFrame.new(0,0,0)},

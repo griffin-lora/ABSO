@@ -35,15 +35,12 @@ return typedFunction({
                 end
             end,
             __index = function(_, property)
-                if property == "hitEntities" or property == "save" then
-                    return {}
-                end
                 local propertyInterface = metatable.componentInterface[property]
                 if propertyInterface then
                     local value
                     for _, callback in ipairs(metatable.callbacks) do
                         if not callback[1] and callback[3] == property then
-                            local currentValue = callback[2](rawget(component, "property"))
+                            local currentValue = callback[2](metatable.properties[property])
                             if value and currentValue then
                                 error("Access conflict. 2 or more access callbacks are returning a value.")
                             end

@@ -27,7 +27,7 @@ return function(Sunshine, entity)
                     end
                     if sceneTransition.type == "death" then
                         local screenPoint = workspace.Camera:WorldToScreenPoint(
-                            player.player.mainCharacter.transform.cFrame.Position
+                            Sunshine:getEntityByTag(player.player.mainCharacterTag).transform.cFrame.Position
                         )
                         uiTransform.position = UDim2.new(0, screenPoint.X, 0, screenPoint.Y + 30)
                         cutoutLabel.Image = "rbxassetid://2396957701"
