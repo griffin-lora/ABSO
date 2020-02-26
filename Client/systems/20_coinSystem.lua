@@ -30,13 +30,13 @@ return function(Sunshine, entity)
         end, entity)
         Sunshine:change(function(hitEntities)
             for _, hitEntity in pairs(hitEntities) do
-                if hitEntity and ((hitEntity.head and hitEntity.head.character) or (hitEntity.character and
-                hitEntity.character.player)) and not collected then
+                if hitEntity and ((hitEntity.head and Sunshine:getEntityById(hitEntity.head.characterTag))
+                or (hitEntity.character and hitEntity.character.player)) and not collected then
                     local player
                     if hitEntity.character then
                         player = hitEntity.character.player
                     elseif hitEntity.head then
-                        local character = hitEntity.head.character
+                        local character = Sunshine:getEntityByTag(hitEntity.head.characterTag)
                         player = character.character.player
                     end
                     startTick = entity.core.tick
