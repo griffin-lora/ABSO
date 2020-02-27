@@ -86,11 +86,7 @@ return function(Sunshine, entity)
                     mass = mass + descendant:GetMass()
                 end
             end
-            if physics.gravityScale then
-                gravityIgnoreBodyForce.Force = VECTOR3_NEW(0, workspace.Gravity * physics.gravityScale, 0) * mass
-            else
-                gravityIgnoreBodyForce.Force = VECTOR3_NEW(0, workspace.Gravity, 0) * mass
-            end
+            gravityIgnoreBodyForce.Force = VECTOR3_NEW(0, workspace.Gravity * physics.gravityScale, 0) * mass
         end
         if physics.movable then
             bodyVelocity.Parent = nil

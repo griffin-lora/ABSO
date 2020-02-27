@@ -23,6 +23,7 @@ return {
         frictionWeight = {type = "number", default = 1},
         elasticityWeight = {type = "number", default = 1},
         movable = {type = "boolean", default = true},
+		gravityScale = {type = "number", default = 1}
     },
     tag = {
         tag = {type = "string", default = ""}

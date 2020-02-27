@@ -9,7 +9,6 @@ return function(Sunshine, entity)
             local character = Sunshine:getEntityByTag(player.characterTag)
             local camera = Sunshine:getEntityByTag(player.cameraTag)
             if mainCharacter and character and camera then
-                print("b")
                 character.character.player = entity
                 character.input.cameraTag = player.cameraTag
                 camera.camera.subjectTag = player.characterTag

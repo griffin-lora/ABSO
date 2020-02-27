@@ -1,5 +1,4 @@
 local state = "swimUp"
-local oldGravity = workspace.Gravity
 
 return function(Sunshine, entity)
     local component = entity[state]
@@ -37,6 +36,6 @@ return function(Sunshine, entity)
             gravity = true
         end
         lastSpace = input.space
-        workspace.Gravity = gravity and 70 or oldGravity
+        physics.gravityScale = gravity and 0.01 or 1 --70 / workspace.Gravity or 1
     end)
 end
