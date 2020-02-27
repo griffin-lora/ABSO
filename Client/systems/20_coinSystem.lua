@@ -6,12 +6,13 @@ return function(Sunshine, entity)
     local coin = entity.coin
     local regionalCoin = entity.regionalCoin
     local transform = entity.transform
+    local transparency = entity.transparency
     local collider = entity.collider
     local speaker = entity.speaker
 
     local stop = false
 
-    if (coin or regionalCoin) and transform and collider and speaker then
+    if (coin or regionalCoin) and transform and collider and speaker and transparency then
         local collected = false
         local info
         if coin then
@@ -24,8 +25,13 @@ return function(Sunshine, entity)
         Sunshine:update(function()
             if collected and entity.core.tick - startTick <= info.Time then
                 transform.size = Sunshine:tween(entity.core.tick - startTick, info, size, ZERO_VECTOR3)
+                if transform.size.x < 0.06 then
+                    transparency.transparency = 1
+                end
             elseif collected and speaker.sounds == 0 then
                 Sunshine:destroyEntity(entity)
+            elseif collected then
+                transparency.transparency = 1
             end
         end, entity)
         Sunshine:change(function(hitEntities)

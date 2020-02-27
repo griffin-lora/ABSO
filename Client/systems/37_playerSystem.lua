@@ -9,9 +9,10 @@ return function(Sunshine, entity)
             local character = Sunshine:getEntityByTag(player.characterTag)
             local camera = Sunshine:getEntityByTag(player.cameraTag)
             if mainCharacter and character and camera then
+                print("b")
                 character.character.player = entity
-                character.input.camera = camera
-                camera.camera.subject = character
+                character.input.cameraTag = player.cameraTag
+                camera.camera.subjectTag = player.characterTag
                 if character ~= mainCharacter then
                     mainCharacter.transform.cFrame = CFRAME_NEW(0, 100000, 0)
                     mainCharacter.physics.movable = false

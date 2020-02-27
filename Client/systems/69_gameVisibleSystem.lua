@@ -1,3 +1,5 @@
+--nice
+
 return function(Sunshine, entity)
     local visible = entity.visible
     local gameVisible = entity.gameVisible

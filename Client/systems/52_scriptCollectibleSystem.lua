@@ -16,7 +16,7 @@ return function(Sunshine, entity)
                 hitEntity.character.controllable and collider.trigger then
                     scriptCollectible.active = true
                     character = hitEntity
-                    camera = character.input.camera
+                    camera = Sunshine:getEntityByTag(character.input.cameraTag)
                     character.animator.action = 1076799780
                     character.input.moveVector = Vector3.new(0,0,0)
                     character.character.controllable = false

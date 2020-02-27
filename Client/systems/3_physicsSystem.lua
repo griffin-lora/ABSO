@@ -11,6 +11,7 @@ return function(Sunshine, entity)
     local lockAxis = entity.lockAxis
     local lockRotationAxis = entity.lockRotationAxis
     local gravity = entity.gravity
+
     if model and transform and physics then
         local bodyVelocity = INSTANCE_NEW("BodyVelocity")
         bodyVelocity.MaxForce = VECTOR3_NEW(math.huge, math.huge, math.huge)
@@ -85,7 +86,11 @@ return function(Sunshine, entity)
                     mass = mass + descendant:GetMass()
                 end
             end
-            gravityIgnoreBodyForce.Force = VECTOR3_NEW(0, workspace.Gravity, 0) * mass
+            if physics.gravityScale then
+                gravityIgnoreBodyForce.Force = VECTOR3_NEW(0, workspace.Gravity * physics.gravityScale, 0) * mass
+            else
+                gravityIgnoreBodyForce.Force = VECTOR3_NEW(0, workspace.Gravity, 0) * mass
+            end
         end
         if physics.movable then
             bodyVelocity.Parent = nil
