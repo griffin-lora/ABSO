@@ -10,10 +10,9 @@ return function(Sunshine, entity)
         local startTick
         local character
         local camera
-        Sunshine:update(function()
+        Sunshine:change(function(hitEntities)
             for _,hitEntity in pairs(collider.hitEntities) do
-                if hitEntity and hitEntity.character and
-                hitEntity.character.controllable and collider.trigger then
+                if hitEntity and (hitEntity.tag and hitEntity.tag.tag == "character") and collider.trigger then
                     scriptCollectible.active = true
                     character = hitEntity
                     camera = Sunshine:getEntity(character.input.camera, entity.core.scene)
@@ -46,6 +45,8 @@ return function(Sunshine, entity)
                     end
                 end
             end
+        end, entity, collider, "hitEntities")
+        Sunshine:update(function()
             if startTick ~= nil and character and camera then
                 if entity.core.tick - startTick > 3.3 then
                     startTick = nil
