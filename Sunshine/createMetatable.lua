@@ -18,7 +18,7 @@ return typedFunction({
                 if propertyInterface then
                     local interfaceType = propertyInterface.type
                     local valueType = Sunshine:typeOf(value)
-                    if (propertyInterface.canBeNil and value == nil) or interfaceType == valueType or
+                    if (propertyInterface.default == nil and value == nil) or interfaceType == valueType or
                     (interfaceType == "Entity" and valueType == "string") then
                         metatable.properties[property] = value
                         for _, callback in ipairs(metatable.callbacks) do
@@ -51,7 +51,7 @@ return typedFunction({
                     if value then
                         local interfaceType = propertyInterface.type
                         local valueType = Sunshine:typeOf(value)
-                        if (propertyInterface.canBeNil and value == nil) or interfaceType == valueType then
+                        if (propertyInterface.default == nil and value == nil) or interfaceType == valueType then
                             return value
                         else
                             error("Access callback returned type " .. tostring(valueType) .. " instead of "
