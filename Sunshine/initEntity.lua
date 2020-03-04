@@ -90,6 +90,26 @@ return typedFunction({
                 end
             end
         end
+        -- final type check
+        for componentName, component in pairs(entity) do
+            if componentName ~= "core" and componentName ~= "objectType" then
+                local componentInterface = Sunshine.componentInterfaces[componentName]
+                if componentInterface then
+                    for name, propertyInterface in pairs(componentInterface) do
+                        local value = component[name]
+                        local valueType = Sunshine:typeOf(value)
+                        local interfaceType = propertyInterface.type
+                        if not ((propertyInterface.default == nil and value == nil) or interfaceType == valueType or
+                        (interfaceType == "Entity" and valueType == "string")) then
+                            error("Property " .. name .. " on component " .. componentName .. " has type "
+                            .. valueType .. " instead of " .. interfaceType)
+                        end
+                    end
+                else
+                    error("Component " .. componentName .. " does not exist.")
+                end
+            end
+        end
         scene.entities[#scene.entities + 1] = entity
         return entity
     else
