@@ -21,9 +21,11 @@ return function(Sunshine, entity)
     local tag = entity.tag
     local gravity = entity.gravity
     if character and model and transform and physics and animator and gravity then
-        local lastGroundeds = {}
+        local beforeLastGrounded
+        local lastGrounded
         local lastVelocity
         local lastMoveVector
+        local aerialVelocity
         model.model.PrimaryPart.CanCollide = false
         local hitbox = model.model.PrimaryPart:Clone()
         hitbox.Name = "Hitbox"
@@ -93,13 +95,19 @@ return function(Sunshine, entity)
                 end
                 local damping = 0.33
                 local canLoseMagnitude = true
-                local fullyGrounded = lastGroundeds[1] and lastGroundeds[2] and character.grounded
+                local fullyGrounded = character.grounded and lastGrounded and beforeLastGrounded
                 if not fullyGrounded then
                     canLoseMagnitude = false
                 elseif moveVector == BLANK_VECTOR3 then
-                    damping = 0.75
+                    damping = 0.9
                 end
-                if character.canLoseMagnitude or character.swimming or (lastGroundeds[1] and character.grounded) then
+                if moveVector == BLANK_VECTOR3 and character.grounded and not lastGrounded then
+                    damping = 1
+                end
+                if fullyGrounded then
+                    aerialVelocity = nil
+                end
+                if character.canLoseMagnitude or character.swimming or fullyGrounded then
                     canLoseMagnitude = true
                 end
                 local function calculateVelocity()
@@ -113,16 +121,16 @@ return function(Sunshine, entity)
                     return vector3New(xVelocity, 0, zVelocity)
                 end
                 local velocity = calculateVelocity()
-                if not canLoseMagnitude and lastVelocity and velocity.Magnitude < lastVelocity.Magnitude then
+                if aerialVelocity and not canLoseMagnitude and aerialVelocity and velocity.Magnitude < aerialVelocity.Magnitude then
                     if velocity.Unit.Magnitude == velocity.Unit.Magnitude then
                         if character.moving then
-                            velocity = velocity:Lerp(velocity.Unit * lastVelocity.Magnitude,
+                            velocity = velocity:Lerp(velocity.Unit * aerialVelocity.Magnitude,
                             dotToLerp(moveVector:Dot(velocity.Unit)))
                         else
-                            velocity = velocity.Unit * lastVelocity.Magnitude
+                            velocity = velocity.Unit * aerialVelocity.Magnitude
                         end
                     else
-                        velocity = lastVelocity
+                        velocity = aerialVelocity
                     end
                 end
                 physics.velocity = vector3New(velocity.X, physics.velocity.Y, velocity.Z)
@@ -132,9 +140,12 @@ return function(Sunshine, entity)
                     physics.velocity = vector3New(physics.velocity.X, 0, physics.velocity.Z)
                 end
                 lastMoveVector = moveVector
+                if not character.grounded then
+                    aerialVelocity = velocity
+                end
                 lastVelocity = velocity
-                lastGroundeds[2] = lastGroundeds[1]
-                lastGroundeds[1] = character.grounded
+                beforeLastGrounded = lastGrounded
+                lastGrounded = character.grounded
                 if health and tag and tag.tag == "mainCharacter" then
                     if health.health <= 0 then
                         local cutout = Sunshine:getEntityByTag("sceneTransition")
