@@ -23,7 +23,6 @@ return function(Sunshine, entity)
         --     end
         -- end
         originalSize = model.model.PrimaryPart.Size
-        transform.cFrame = nil
         local lastCFrame = CFRAME_NEW()
         Sunshine:access(function()
             if not model.model.Parent then
