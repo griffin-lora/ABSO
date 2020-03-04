@@ -18,7 +18,7 @@ return typedFunction({
                 if propertyInterface then
                     local interfaceType = propertyInterface.type
                     local valueType = Sunshine:typeOf(value)
-                    if value == nil or interfaceType == valueType or
+                    if (propertyInterface.canBeNil and value == nil) or interfaceType == valueType or
                     (interfaceType == "Entity" and valueType == "string") then
                         metatable.properties[property] = value
                         for _, callback in ipairs(metatable.callbacks) do
@@ -27,7 +27,8 @@ return typedFunction({
                             end
                         end
                     else
-                        error("Attempted to set property " .. tostring(property) .. " to type " .. tostring(valueType))
+                        error("Attempted to set property " .. tostring(property) .. " to type " .. tostring(valueType)
+                        .. " on component " .. tostring(metatable.componentName))
                     end
                 else
                     error("Property " .. tostring(property) .. " doesn't exist on component "
@@ -50,7 +51,7 @@ return typedFunction({
                     if value then
                         local interfaceType = propertyInterface.type
                         local valueType = Sunshine:typeOf(value)
-                        if value == nil or interfaceType == valueType then
+                        if (propertyInterface.canBeNil and value == nil) or interfaceType == valueType then
                             return value
                         else
                             error("Access callback returned type " .. tostring(valueType) .. " instead of "
