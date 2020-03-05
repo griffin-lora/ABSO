@@ -47,14 +47,7 @@
             "Suite": {
                 "$className": "Folder",
                 "Suite": {
-                    "$className": "Script",
-                    "$path": "Suite/init.server.lua",
-                    "systems": {
-                        "$path": "Suite/systems"
-                    },
-                    "scene": {
-                        "$path": "Suite/scene.lua"
-                    }
+                    "$path": "Suite"
                 },
                 "Sunshine": {
                     "$path": "Sunshine"

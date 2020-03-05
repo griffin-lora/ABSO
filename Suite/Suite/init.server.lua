@@ -1,6 +1,6 @@
 if game:GetService("RunService"):IsEdit() then
-    local Sunshine = require(script.Parent.Sunshine)
-    local PluginNetworkClient = require(script.Parent.PluginNetworkClient)
+    local Sunshine = require(script.Parent.Parent.Sunshine)
+    local PluginNetworkClient = require(script.Parent.Parent.PluginNetworkClient)
 
     for _, child in pairs(workspace:GetChildren()) do
         if child:IsA("Message") and child.Name == "SunshineSuiteWorkspace" then
@@ -20,8 +20,15 @@ if game:GetService("RunService"):IsEdit() then
     PluginNetworkClient:init(plugin)
 
     Sunshine:manage()
+    local suiteComponentInterfaces = require(script:WaitForChild("componentInterfaces"))
+    local clientComponentInterfaces = require(game:GetService("ReplicatedFirst"):WaitForChild("Client")
+    :WaitForChild("componentInterfaces"))
+    for name, interface in pairs(clientComponentInterfaces) do
+        suiteComponentInterfaces[name] = interface
+    end
+    Sunshine:setComponentInterfaces(suiteComponentInterfaces)
     Sunshine:addSystemFolder(script:WaitForChild("systems"))
-    Sunshine:loadScene(require(script:WaitForChild("scene")))
+    Sunshine:loadScene(require(script.Parent:WaitForChild("Assets"):WaitForChild("scene")))
 else
     wait(2)
     for _, child in pairs(workspace:GetChildren()) do
