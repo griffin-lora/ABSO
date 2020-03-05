@@ -56,7 +56,7 @@ return {entities = {
             size = UDim2.new(0.6, 0, 0.2, 0),
             text = "Load Scene",
             textColor = Color3.fromRGB(69, 189, 117),
-            font = "GothamBlack"
+            font = Enum.Font.GothamBlack
         },
         loader = {}
     },
@@ -84,7 +84,7 @@ return {entities = {
             size = UDim2.new(0.6, 0, 0.2, 0),
             text = "Create Entity",
             textColor = Color3.fromRGB(69, 189, 117),
-            font = "GothamBlack"
+            font = Enum.Font.GothamBlack
         },
         creator = {}
     },
@@ -111,7 +111,7 @@ return {entities = {
     --         size = UDim2.new(0.6, 0, 0.2, 0),
     --         text = "Save Scene",
     --         textColor = Color3.fromRGB(0, 135, 200),
-    --         font = "GothamBlack"
+    --         font = Enum.Font.GothamBlack
     --     },
     --     saver = {}
     -- },
@@ -205,7 +205,7 @@ return {entities = {
             outlineTransparency = 1,
             outlineColor = Color3.new(0, 0, 0),
             size = UDim2.new(0.8, 0, 0.1, 0),
-            font = "GothamBold"
+            font = Enum.Font.GothamBold
         },
         tag = {
             tag = "entitySelectedText"
@@ -269,7 +269,7 @@ return {entities = {
             size = UDim2.new(0.9, 0, 0.15, 0),
             text = "Back",
             textColor = Color3.fromRGB(0, 0, 0),
-            font = "GothamBold"
+            font = Enum.Font.GothamBold
         },
         tag = {
             tag = "componentBackButton"
@@ -343,8 +343,6 @@ return {entities = {
         },
         change = {
         },
-        teamCreate = {
-        },
         history = {
         },
         tag = {
@@ -369,7 +367,7 @@ return {entities = {
             text = "",
             placeholderText = "Add Component",
             textColor = Color3.fromRGB(255, 255, 255),
-            font = "SourceSans"
+            font = Enum.Font.SourceSans
         },
         tag = {
             tag = "addComponentBox"

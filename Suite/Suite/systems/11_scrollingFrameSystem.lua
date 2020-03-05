@@ -9,7 +9,7 @@ return function(Sunshine, entity)
         frameInstance.ScrollingDirection = scrollingFrame.scrollingDirection
         frameInstance.BackgroundTransparency = 1
         frameInstance.BorderSizePixel = 0
-        
+        ---------------------------------
         Sunshine:addInstance(frameInstance, entity)
         local originalSize = scrollingFrame.size
         Sunshine:update(function()
@@ -18,7 +18,7 @@ return function(Sunshine, entity)
                 frameInstance.Visible = visible.visible
             end
             if parent then
-                local parentEntity = Sunshine:getEntity(parent.parent, entity.core.scene)
+                local parentEntity = parent.parent
                 if parentEntity then
                     local parentFrame = parentEntity.frame
                     local parentLabel = parentEntity.label

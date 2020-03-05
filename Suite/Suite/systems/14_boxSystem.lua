@@ -19,7 +19,7 @@ return function(Sunshine, entity)
         boxInstance.TextXAlignment = Enum.TextXAlignment.Left
         Sunshine:addInstance(boxInstance, entity)
         if parent then
-            local parentEntity = Sunshine:getEntity(parent.parent, entity.core.scene)
+            local parentEntity = parent.parent
             if parentEntity then
                 local parentFrame = parentEntity.frame
                 local parentLabel = parentEntity.label
@@ -68,14 +68,6 @@ return function(Sunshine, entity)
             boxInstance.Rotation = uiTransform.rotation
             boxInstance.ZIndex = uiTransform.zIndex
             boxInstance.AnchorPoint = uiTransform.anchorPoint
-            if box.activated then
-                if endActivation then
-                    box.activated = false
-                    endActivation = false
-                else
-                    endActivation = true
-                end
-            end
         end, entity)
         Sunshine:change(function(placeholderText)
             boxInstance.PlaceholderText = placeholderText

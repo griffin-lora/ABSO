@@ -19,7 +19,7 @@ return function(Sunshine, entity)
             end
             Sunshine:addInstance(frame.frame, entity)
             if parent then
-                local parentEntity = Sunshine:getEntity(parent.parent, entity.core.scene)
+                local parentEntity = parent.parent
                 if parentEntity then
                     local parentFrame = parentEntity.frame
                     local parentLabel = parentEntity.label
@@ -66,7 +66,7 @@ return function(Sunshine, entity)
             labelInstance.TextTruncate = "AtEnd"
             Sunshine:addInstance(labelInstance, entity)
             if parent then
-                local parentEntity = Sunshine:getEntity(parent.parent, entity.core.scene)
+                local parentEntity = parent.parent
                 if parentEntity then
                     local parentFrame = parentEntity.frame
                     local parentLabel = parentEntity.label

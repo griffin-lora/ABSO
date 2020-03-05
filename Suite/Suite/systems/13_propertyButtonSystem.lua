@@ -5,7 +5,7 @@ return function(Sunshine, entity)
     local parent = entity.parent
     local changeManager
     if propertyButton and parent then
-        local focusedScrollingFrame = Sunshine:getEntity("{8465CE6D-CB7D-4779-8BFE-0AA1C205E188}", entity.core.scene)
+        local focusedScrollingFrame = Sunshine:getEntityById("{8465CE6D-CB7D-4779-8BFE-0AA1C205E188}")
         --------------------------------------------------------------------------------------
         if propertyButton.type == "number" or propertyButton.type == "string" then
             ----------------------------------------------------------------------------------

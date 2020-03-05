@@ -26,7 +26,6 @@ return function(Sunshine, entity)
         end
         Sunshine:update(function()
             if change.entity then
-                change.teamCreateUpdate = false
                 handleChange(change.entity, change.componentName, change.propertyName, change.propertyValue,
                 change.alreadyChangedOnEntity, change.newEntity, change.newComponent)
                 change.entity = nil

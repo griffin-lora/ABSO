@@ -15,7 +15,7 @@ return function(Sunshine, entity)
         buttonInstance.BackgroundTransparency = 1
         Sunshine:addInstance(buttonInstance, entity)
         if parent then
-            local parentEntity = Sunshine:getEntity(parent.parent, entity.core.scene)
+            local parentEntity = parent.parent
             if parentEntity then
                 local parentFrame = parentEntity.frame
                 local parentLabel = parentEntity.label

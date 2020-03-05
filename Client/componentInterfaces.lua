@@ -129,6 +129,16 @@ return {
     frame = {
         frame = {type = "Instance", default = nil}
     },
+    scrollingFrame = {
+        size = {type = "UDim2", default = UDim2.new(1,-5,0.65,0)},
+        canvasSize = {type = "UDim2", default = UDim2.new(0,0,0,0)},
+        scrollingDirection = {type = "string", default = "Y"},
+        frame = {type = "Instance", default = nil}
+    },
+    uiListLayout = {
+        padding = {type = "UDim", default = UDim.new(0, 5)},
+        instance = {type = "Instance", defualt = nil}
+    },
     uiTransform = {
         position = {type = "UDim2", default = UDim2.new()},
         rotation = {type = "number", default = 0},
@@ -140,18 +150,25 @@ return {
         text = {type = "string", default = "label"},
         size = {type = "UDim2", default = UDim2.new(0, 100, 0, 100)},
         color = {type = "Color3", default = Color3.new(1, 1, 1)},
-        font = {type = "EnumItem", default = Enum.Font.Highway}
+        font = {type = "EnumItem", default = Enum.Font.Highway},
+        outlineTransparency = {type = "number", default = 1},
+        outlineColor = {type = "Color3", default = Color3.new(0, 0, 0)}
     },
     button = {
         activated = {type = "boolean", default = false},
         size = {type = "UDim2", default = UDim2.new(0, 100, 0, 100)},
-        text = {type = "string", default = ""}
+        text = {type = "string", default = ""},
+        font = {type = "EnumItem", default = Enum.Font.SourceSans},
+        textColor = {type = "Color3", default = Color3.new(0, 0, 0)}
     },
     box = {
         focused = {type = "boolean", default = false},
         enterPressed = {type = "boolean", default = false},
         size = {type = "UDim2", default = UDim2.new(0, 100, 0, 100)},
-        text = {type = "string", default = ""}
+        text = {type = "string", default = ""},
+        placeholderText = {type = "string", default = ""},
+        font = {type = "EnumItem", default = Enum.Font.SourceSans},
+        textColor = {type = "Color3", default = Color3.new(0, 0, 0)}
     },
     sound = {
         id = {type = "number", default = 0},
