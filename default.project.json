@@ -47,7 +47,16 @@
             "Suite": {
                 "$className": "Folder",
                 "Suite": {
-                    "$path": "Suite"
+                    "$path": "Suite/Suite"
+                },
+                "Assets": {
+                    "$className": "Folder",
+                    "prefabs": {
+                        "$path": "Suite/Assets/prefabs.rbxm"
+                    },
+                    "scene": {
+                        "$path": "Suite/Assets/scene.lua"
+                    }
                 },
                 "Sunshine": {
                     "$path": "Sunshine"

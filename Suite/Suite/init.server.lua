@@ -1,6 +1,6 @@
 if game:GetService("RunService"):IsEdit() then
-    local Sunshine = require(script.Parent.Parent.Sunshine)
-    local PluginNetworkClient = require(script.Parent.Parent.PluginNetworkClient)
+    local Sunshine = require(script.Parent.Sunshine)
+    local PluginNetworkClient = require(script.Parent.PluginNetworkClient)
 
     for _, child in pairs(workspace:GetChildren()) do
         if child:IsA("Message") and child.Name == "SunshineSuiteWorkspace" then
